@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="css/LR.css" />
+</head>
+<body>
+	<div class="frame" id="Login">
+			<section>
+				
+				<table>
+					<tr>
+						<th>
+							用户登录
+						</th>
+					</tr>
+					<tr>
+						<td id="warning"><%-message %></td> 
+					</tr>
+					<tr>
+						<td><input type="text" placeholder="用户名" id="user"></td>
+					</tr>
+					<tr>
+						<td><input type="password" placeholder="密码" id="password"></td>
+					</tr>
+					
+					<tr>
+						<td><a href="javascript:;" id="Llogin">登录</a></td>
+					</tr>
+					<tr>
+						<td><a href="/register" id="Lregis">注册</a>
+						</td>
+					</tr>
+				</table>
+			</section>
+	</div>
+</body>
+<script src="js/jquery.js"></script>
+ <script type="text/javascript">
+//  var Lregis=document.getElementById('Lregis');
+//  // serialize()方法进行序列化表单值，创建文本字符串。
+    // var data=document.getElementById('Login').serialize();
+    $("#Llogin").bind("click",function(){
+    	$.ajax({
+	        url:'/login',
+	        type:'POST',
+	        data:{user:$("#user").val(),
+              password:$("#password").val()
+       		},
+	        success:function(data,status){
+	           if(status == 'success'){
+	           }
+	        },
+	        error:function(res,err){
+	           location.href='/login';
+	        }
+	    });
+
+	});
+   
+ </script>
+</html>

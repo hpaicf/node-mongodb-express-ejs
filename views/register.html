@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="css/LR.css" />
+</head>
+<body>
+	<div class="frame" id="Register">
+		<section>
+			
+			<table>
+				<tr>
+					<th>
+						用户注册
+					</th>
+				</tr>
+				<tr>
+						<td id="warning"><%- message %></td>
+			    </tr>
+				<tr>
+					<td><input type="text" placeholder="用户名" id="user"></td>
+				</tr>
+				<tr>
+					<td><input type="password" placeholder="密码" id="password"></td>
+				</tr>
+				<tr>
+					<td><input type="password" placeholder="确认密码"></td>
+				</tr>
+				<tr>
+					<td><a href="javascript:;" id="Rregis">注册</a></td>
+				</tr>
+				<tr>
+					<td><a href="/login" id="Rlogin">登录</a>
+					</td>
+				</tr>
+			</table>
+		</section>
+	</div>
+</body>
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+    // serialize()方法进行序列化表单值，创建文本字符串。
+    // var data=document.getElementById('Register').serialize();
+    $("#Rregis").bind("click",function(){
+    	$.ajax({
+       url:'/register',
+       type:'POST',
+       data:{user:$("#user").val(),
+              password:$("#password").val()
+       },
+       success:function(data,status){
+           console.log(status);
+           if(status == 'success'){
+           	    console.log(status);
+               // location.href='login';
+           }
+       },
+       error:function(res,err){
+       	   location.href='register';
+       }
+     });
+
+    });
+   
+</script>
+</html>
