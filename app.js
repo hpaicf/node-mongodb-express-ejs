@@ -50,11 +50,12 @@ app.use(multer());
 // 设定静态文件目录，比如本地文件
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 设置动态全局变量，使用中间件来传递这些提示信息，就可以显示在页面上了
 app.use(function(req, res, next){
     res.locals.user = req.session.user;
-    var err = req.session.error;
-    res.locals.message = '';
-    if (err) res.locals.message = '<div class="alert alert-danger" style="margin-bottom: 20px;color:red;">' + err + '</div>';
+    var err = req.session.message;
+    res.locals.errors = '';
+    if (err) res.locals.errors = '<div style="color:red;">' + err + '</div>';
     next();
 });
 

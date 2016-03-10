@@ -5,32 +5,32 @@
     <link rel="stylesheet" type="text/css" href="css/LR.css" />
 </head>
 <body>
-	<div class="frame" id="Login">
+	<div class="frame" id="addgoods">
 			<section>
 				
 				<table>
 					<tr>
 						<th>
-							用户登录
+							添加商品
 						</th>
 					</tr>
 					<tr>
 						<td id="warning"><%-errors %></td> 
 					</tr>
 					<tr>
-						<td><input type="text" placeholder="用户名" id="user"></td>
+						<td><input type="text" placeholder="商品名称" id="goodsname"></td>
 					</tr>
 					<tr>
-						<td><input type="password" placeholder="密码" id="password"></td>
+						<td><input type="text" placeholder="商品价格" id="goodsprice"></td>
 					</tr>
 					
 					<tr>
-						<td><a href="javascript:;" id="Llogin">登录</a></td>
+						<td><a href="javascript:;" id="addBtn">添加</a></td>
 					</tr>
 					<tr>
-						<td><a href="/register" id="Lregis">注册</a>
-						</td>
+						<td><a href="Goods">返回商品页</a></td>
 					</tr>
+					
 				</table>
 			</section>
 	</div>
@@ -42,10 +42,11 @@
     // var data=document.getElementById('Login').serialize();
     $("#Llogin").on("click",function(){
     	$.ajax({
-	        url:'/login',
+	        url:'/addgoods',
 	        type:'POST',
-	        data:{user:$("#user").val(),
-              password:$("#password").val()
+	        data:{
+	        	goodsname:$("#goodsname").val(),
+              goodsprice:$("#goodsprice").val()
        		},
 	        success:function(data,status){
 	           if(status == 'success'){
@@ -53,7 +54,7 @@
 	           }
 	        },
 	        error:function(res,err){
-	           location.href='login';
+	           location.href='addGoods';
 	        }
 	    });
 

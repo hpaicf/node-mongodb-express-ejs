@@ -7,5 +7,9 @@ module.exports={
 		name:{type:String,required:true},
 		password: { type: String, required: true },
         gender: { type: Boolean, default: true }
+	},
+	goods:{
+		name:{type:String,required:true},
+		price:{type:Number,required:true}
 	}
 };

@@ -15,7 +15,7 @@
 					</th>
 				</tr>
 				<tr>
-						<td id="warning"><%- message %></td>
+						<td id="warning"><%- errors %></td>
 			    </tr>
 				<tr>
 					<td><input type="text" placeholder="用户名" id="user"></td>
@@ -52,7 +52,7 @@
            console.log(status);
            if(status == 'success'){
            	    console.log(status);
-               // location.href='login';
+                location.href='login';
            }
        },
        error:function(res,err){

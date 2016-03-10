@@ -22,17 +22,19 @@ module.exports=function (app) {
 				if (doc) {
 					console.log("用户已经存在");
 					req.session.message="用户已经存在";
-					res.render('register',{
-						message:req.session.message}
-					);
+					// res.render('register',{
+					// 	message:req.session.message}
+					// );
+			        res.send(404);
 				}
 				else{
 					if (uname==null||uname=='') {
                         console.log("用户名不能为空");
 						req.session.message="用户名不能为空";
-						res.render('register',{
-							message:req.session.message}
-						);
+						// res.render('register',{
+						// 	message:req.session.message}
+						// );
+						res.send(404);
 					}
 					else{
 						User.create({
@@ -42,13 +44,15 @@ module.exports=function (app) {
 							if (error) {
 								req.session.message="服务器错误，请重试";
 								console.log(req.session.message);
-								res.render('register',{
-									message:req.session.message}
-								);
+								// res.render('register',{
+								// 	message:req.session.message}
+								// );
+								res.send(500);
 							}else{
 								console.log("创建成功");
 								req.session.message="用户创建成功";
-								res.render('login');
+								// res.render('login');
+								res.send(200);
 							}
 						});
 					}

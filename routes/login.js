@@ -21,9 +21,10 @@ module.exports=function (app) {
 			User.findOne({name: uname}, function (error, doc){
 				if (error) {
 					req.session.message="服务器错误，请重试";
-						res.render('login',{
-							'message':req.session.message
-						});
+						// res.render('login',{
+						// 	'message':req.session.message
+						// });
+			        res.send(500);
 
 				}
 				else if (doc) {
@@ -31,26 +32,29 @@ module.exports=function (app) {
 					if (doc.password!=password) {
 						req.session.message="密码错误";
 						console.log(req.session.message);
-						res.render('login',{
-							'message':req.session.message
-						});
+						// res.render('login',{
+						// 	'message':req.session.message
+						// });
+			            res.send(404);
 					}
 					else{
 						req.session.user = doc;
 						req.session.message="登录成功";
 						console.log(req.session.message);
-						res.render('Goods',{
-							'user':req.session.user
-						});
+						// res.render('Goods',{
+						// 	'user':req.session.user
+						// });
+			            res.send(200);
 					}
                 }
                 // 没有用户名
                 else{
                     console.log("没有此用户，请注册");
 					req.session.message="没有此用户，请注册";
-					res.render('login',{
-						'message':req.session.message
-					});
+					// res.render('login',{
+					// 	'message':req.session.message
+					// });
+			        res.send(404);
                 }
 		    });
 	});
