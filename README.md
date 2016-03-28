@@ -1,5 +1,5 @@
 # example-node
-一个简单的电商网站demo，使用了nodejs, express, mongodb, mongoose等功能模块。
+初入node   看了一些基础知识之后想找东西练手，就写了一个简单的电商网站demo，使用了nodejs, express, mongodb, mongoose等功能模块。
 
 实现功能：
 
